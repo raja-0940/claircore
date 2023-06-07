@@ -101,7 +101,7 @@ jobs:
             integration-assets-
           path: |
             ~/.cache/go-build
-            ~/go/pkg/mod
+            /home/runner/go/pkg/mod
             ~/.cache/clair-testing
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v2
