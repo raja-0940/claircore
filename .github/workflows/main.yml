@@ -83,7 +83,10 @@ jobs:
         id: previous
         uses: actions/cache@v3
         with:
-          path: ~/ok-by-run
+          path: |
+            ~/ok-by-run
+            ~/.cache/go-build
+            ~/go/pkg/mod
           key: commit-ok-${{ matrix.go }}-${{ github.sha }}
       - name: Checkout
         if: steps.previous.outputs.cache-hit != 'true'
