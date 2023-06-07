@@ -108,13 +108,13 @@ jobs:
           chmod +x ./runtest.sh
           docker run \
           --rm \
-          --platform linux/${{ matrix.architecture}} \
+          --platformm linux/${{ matrix.architecture}} \
           --mount "type=bind,src=$(go env GOMODCACHE),dst=/go/pkg/mod" \
           --mount "type=bind,src=$(go env GOCACHE),dst=/root/.cache/go-build" \
-          --mount "type=bind,src=$(pwd),dst=/claircore" \          
+          --mount "type=bind,src=$(pwd),dst=/claircore" \
           -w /claircore \
           quay.io/projectquay/golang:${{ matrix.go }} \
-          ./runtest.sh          
+          ./runtest.sh                    
       - name: Database Logs
         if: failure() || env.RUNNER_DEBUG == 1
         run: |
