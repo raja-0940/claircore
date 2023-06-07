@@ -109,16 +109,16 @@ jobs:
       - name: Tests on ${{ matrix.architecture }}
         run: |
           chmod +x ./runtest.sh
-          # docker run \
-          # --rm \
-          # --platform linux/${{ matrix.architecture }} \
-          # --mount "type=bind,src=$(go env GOMODCACHE),dst=/go/pkg/mod" \
-          # --mount "type=bind,src=$(go env GOCACHE),dst=/root/.cache/go-build" \
-          # --mount "type=bind,src=$(pwd),dst=/claircore" \
-          # -w /claircore \
-          # quay.io/projectquay/golang:${{ matrix.go }} \
-          # ./runtest.sh
-          docker run --rm --platform linux/${{ matrix.architecture }} quay.io/projectquay/golang:1.20 echo "gomodcache=$(go env GOMODCACHE) and gocache=$(go env GOCACHE)"                   
+          docker run \
+          --rm \
+          --platform linux/${{ matrix.architecture }} \
+          --mount "type=bind,src=$(go env GOMODCACHE),dst=/go/pkg/mod" \
+          --mount "type=bind,src=$(go env GOCACHE),dst=/root/.cache/go-build" \
+          --mount "type=bind,src=$(pwd),dst=/claircore" \
+          -w /claircore \
+          quay.io/projectquay/golang:${{ matrix.go }} \
+          ./runtest.sh
+          # docker run --rm --platform linux/${{ matrix.architecture }} quay.io/projectquay/golang:1.20 echo "gomodcache=$(go env GOMODCACHE) and gocache=$(go env GOCACHE)"                   
       - name: Database Logs
         if: failure() || env.RUNNER_DEBUG == 1
         run: |
