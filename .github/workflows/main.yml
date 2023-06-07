@@ -100,9 +100,9 @@ jobs:
           restore-keys: |
             integration-assets-
           path: |
-            ~/.cache/go-build
-            /home/runner/go/pkg/mod
             ~/.cache/clair-testing
+      - name: Make GOMODCACHE and GOCACHE directories
+        run: mkdir -p "$(go env GOMODCACHE)" "$(go env GOCACHE)"
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v2
       - name: Tests on ${{ matrix.architecture }}
