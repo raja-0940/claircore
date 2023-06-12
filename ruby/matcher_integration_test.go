@@ -1,4 +1,4 @@
-package python
+package ruby
 
 import (
 	"context"
@@ -69,7 +69,7 @@ func TestMatcherIntegration(t *testing.T) {
 		t.Fatalf("%v", err)
 	}
 
-	path := filepath.Join("testdata", "indexreport-rhel8-data.json")
+	path := filepath.Join("testdata", "indexreport-bullseye-ruby.json")
 	f, err := os.Open(path)
 	if err != nil {
 		t.Fatalf("%v", err)
