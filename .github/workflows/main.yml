@@ -125,3 +125,4 @@ jobs:
           sudo journalctl --unit postgresql.service --boot -0
           ls /var/log/postgresql/postgresql-*.log
           sudo cat /var/log/postgresql/postgresql-*.log
+          
